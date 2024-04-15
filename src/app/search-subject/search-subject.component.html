@@ -1,0 +1,55 @@
+<div class="px-4 sm:px-6 lg:px-8">
+  <div class="sm:flex sm:items-center">
+    <div class="px-4 sm:px-0 sm:flex-auto">
+      <h3 class="text-base font-semibold leading-7 text-gray-900">Asignaturas</h3>
+      <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Detalles de busqueda de asignatura.</p>
+    </div>
+    <form class="w-full max-w-md lg:col-span-5 lg:pt-2">
+      <div class="flex gap-x-4">
+        <label for="q" class="sr-only">Nombre de asignatura o clave</label>
+        <input id="q" name="q" type="text" [(ngModel)]="query" required class="min-w-0 flex-auto rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Buscar asignatura clave">
+        <button type="button" (click)="search()" class="flex-none rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Buscar</button>
+      </div>
+    </form>
+  </div>
+  <div class="mt-6 border-t border-gray-100">
+    <dl class="divide-y divide-gray-100">
+      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt class="text-sm font-medium leading-6 text-gray-900">Nombre</dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ name }}</dd>
+      </div>
+      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt class="text-sm font-medium leading-6 text-gray-900">Código</dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ code }}</dd>
+      </div>
+      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt class="text-sm font-medium leading-6 text-gray-900">Aula</dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ classroom }}</dd>
+      </div>
+      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt class="text-sm font-medium leading-6 text-gray-900">Dia</dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ day }}</dd>
+      </div>
+      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt class="text-sm font-medium leading-6 text-gray-900">Horario</dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+          {{ schedule }}
+        </dd>
+      </div>
+      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt class="text-sm font-medium leading-6 text-gray-900">Profesores</dt>
+        <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+          <ul role="list" *ngIf="teachers.length > 0" class="divide-y divide-gray-100 rounded-md border border-gray-200">
+            <li *ngFor="let teacher of teachers" class="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
+              <div class="flex w-0 flex-1 items-center">
+                <div class="ml-4 flex min-w-0 flex-1 gap-2">
+                  <span class="truncate font-medium">{{ teacher.name }} {{ teacher.last_name }}</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>
